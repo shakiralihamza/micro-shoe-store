@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import MyContext from "./Context/MyContext";
 import ShoeData from "./ShoeData";
 import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
@@ -9,6 +9,9 @@ import Breadcrumb from "./Components/Breadcrumb";
 import {Routes, Route} from "react-router-dom";
 import Products from "./Components/Products";
 import About from "./Components/About";
+import ProductByCategory from "./Components/ProductByCategory";
+import ProductDetail from "./Components/ProductDetail";
+import ProductIndex from "./Components/ProductIndex";
 
 const theme = createTheme({
     palette: {
@@ -31,8 +34,17 @@ const theme = createTheme({
 
 function App() {
     const shoes = ShoeData();
+    const [category, setCategory] = useState('');
+    const [menu, setMenu] = useState('');
+    const [currentProduct, setCurrentProduct] = useState('');
     const ContextData = {
-        shoes
+        shoes,
+        category,
+        setCategory,
+        menu,
+        setMenu,
+        currentProduct,
+        setCurrentProduct
     }
 
     return (
@@ -44,7 +56,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="about" element={<About/>}/>
-                    <Route path="products" element={<Products/>}/>
+                    <Route path="products" element={<Products/>}>
+                        <Route index element={<ProductIndex/>}/>
+                        <Route path={':category'} element={<ProductByCategory/>}/>
+                        <Route path={':category/:title'} element={<ProductDetail/>}/>
+                    </Route>
                 </Routes>
             </MyContext.Provider>
         </ThemeProvider>
