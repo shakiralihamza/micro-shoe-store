@@ -54,32 +54,32 @@ const ImageBlock = ({categories}) => {
         <ImageList cols={2} gap={20}>
             {
                 categories.map((cat) => (
-                    <Box component={'li'} sx={{'&:hover': {cursor: 'pointer'}}}
-                         onClick={() => handleClick(cat.title)}>
-                        <ImageListItem>
-                            <img
-                                src={cat.image}
-                                alt={`${cat.title}'s Shoes`}
-                                loading="lazy"
-                            />
-                            <ImageListItemBar
-                                title={
-                                    <>
-                                        <Box component={'span'} sx={{textTransform: 'capitalize'}}>{cat.title}</Box>'s
-                                        Shoes
-                                    </>
-                                }
-                                actionIcon={
-                                    <IconButton
-                                        sx={{color: 'rgba(255, 255, 255, 0.54)'}}
-                                        aria-label={`info about ${cat.title}'s Shoes`}
-                                    >
-                                        <InfoIcon/>
-                                    </IconButton>
-                                }
-                            />
-                        </ImageListItem>
-                    </Box>
+                    <ImageListItem
+                        sx={{'&:hover': {cursor: 'pointer'}}}
+                        onClick={() => handleClick(cat.title)}
+                    >
+                        <img
+                            src={cat.image}
+                            alt={`${cat.title}'s Shoes`}
+                            loading="lazy"
+                        />
+                        <ImageListItemBar
+                            title={
+                                <>
+                                    <Box component={'span'} sx={{textTransform: 'capitalize'}}>{cat.title}</Box>'s
+                                    Shoes
+                                </>
+                            }
+                            actionIcon={
+                                <IconButton
+                                    sx={{color: 'rgba(255, 255, 255, 0.54)'}}
+                                    aria-label={`info about ${cat.title}'s Shoes`}
+                                >
+                                    <InfoIcon/>
+                                </IconButton>
+                            }
+                        />
+                    </ImageListItem>
                 ))
             }
         </ImageList>

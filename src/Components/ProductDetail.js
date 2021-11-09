@@ -13,7 +13,8 @@ function ProductDetail() {
         setCurrentProduct(title);
         setCategory(category);
         return ()=> {
-            setCurrentProduct('')
+            setCurrentProduct('');
+            setCategory('');
         }
     },[category, setCategory, setCurrentProduct, title]);
 
