@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import HomeIcon from '@mui/icons-material/Home';
@@ -14,21 +13,26 @@ export default function Breadcrumb() {
     const {menu, category, currentProduct} = useContext(MyContext);
     const navigate = useNavigate();
 
-    function handleClick(path) {
+    function handleMenu(path) {
         navigate(path);
     }
 
     return (
         <Container maxWidth={'lg'} sx={{mt: 3}}>
-            <div role="presentation" onClick={handleClick}>
+            <div role="presentation">
                 <Breadcrumbs aria-label="breadcrumb">
                     {
-                        menu === '/' || menu ==='products'
+                        menu === 'products'
                             ?
                             <Link
-                                underline="none"
-                                sx={{display: 'flex', alignItems: 'center'}}
+                                underline="hover"
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    '&:hover': {cursor: 'pointer'}
+                                }}
                                 color="inherit"
+                                onClick={() => handleMenu('/')}
                             >
                                 <HomeIcon sx={{mr: 0.5}} fontSize="inherit"/>
                                 Home
@@ -40,13 +44,15 @@ export default function Breadcrumb() {
                         menu === 'products'
                             ?
                             <Link
-                                underline="none"
+                                underline={category===''?'none':'hover'}
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
-                                    color: category === '' ? 'text.primary' : null
+                                    color: category === '' ? 'text.primary' : null,
+                                    '&:hover': {cursor: category===''?'default':'pointer'}
                                 }}
                                 color="inherit"
+                                onClick={() => handleMenu('/products')}
                             >
                                 Products
                             </Link>
@@ -56,27 +62,36 @@ export default function Breadcrumb() {
                     {
                         category
                             ?
-                            <Typography
+                            <Link
+                                underline={currentProduct===''?'none':'hover'}
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
-                                    color: currentProduct === '' ? 'text.primary' : null
+                                    color: currentProduct === '' ? 'text.primary' : null,
+                                    '&:hover': {cursor: currentProduct===''?'default':'pointer'}
                                 }}
+                                color="inherit"
+                                onClick={() => handleMenu(`/products/${category}`)}
                             >
                                 <Box component={'span'} sx={{textTransform: "capitalize"}}>{category}</Box>
-                            </Typography>
+                            </Link>
                             :
                             null
                     }
                     {
                         currentProduct
                             ?
-                            <Typography
-                                sx={{display: 'flex', alignItems: 'center'}}
-                                color="text.primary"
+                            <Link
+                                underline='none'
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    color: 'text.primary',
+                                    '&:hover': {cursor: 'default'}
+                                }}
                             >
                                 {currentProduct}
-                            </Typography>
+                            </Link>
                             :
                             null
                     }
