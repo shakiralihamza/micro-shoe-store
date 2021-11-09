@@ -12,11 +12,12 @@ import About from "./Components/About";
 import ProductByCategory from "./Components/ProductByCategory";
 import ProductDetail from "./Components/ProductDetail";
 import ProductIndex from "./Components/ProductIndex";
+import {lime} from "@mui/material/colors";
 
 const theme = createTheme({
     palette: {
-        mode: 'dark',
-        // mode: 'light',
+        mode: 'light',
+        primary: lime
     },
     components: {
         MuiButtonBase: {
