@@ -37,7 +37,7 @@ function Header() {
                 <Container maxWidth={'lg'}>
                     <Toolbar disableGutters>
                         <Grid container alignItems={"center"}>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} sm={12} md={4}>
                                 <IconButton
                                     size="medium"
                                     edge="start"
@@ -48,8 +48,8 @@ function Header() {
                                     Shoe Store
                                 </IconButton>
                             </Grid>
-                            <Grid item xs={4}>
-                                <Grid container justifyContent={"center"}>
+                            <Grid item xs={12} sm={6} md={4} order={{xs: 1, sm: 0}} sx={{marginTop: {xs: '10px', sm: '0'}}}>
+                                <Grid container justifyContent={{xs:'center', sm:'center', md:"center"}}>
                                     <Grid item xs={"auto"}>
                                         <Stack
                                             // sx={{flexGrow: 1, mt: 1, justifyContent: "center"}}
@@ -80,10 +80,9 @@ function Header() {
                                         </Stack>
                                     </Grid>
                                 </Grid>
-
                             </Grid>
-                            <Grid item xs={4}>
-                                <Grid container justifyContent={"end"}>
+                            <Grid item xs={12} sm={6} md={4}>
+                                <Grid container justifyContent={{xs:'center', sm:'center', md:"end"}}>
                                     <Grid item xs={"auto"}>
                                         <Stack
                                             direction="row"
@@ -118,7 +117,6 @@ function Header() {
                                         </Stack>
                                     </Grid>
                                 </Grid>
-
                             </Grid>
                         </Grid>
                     </Toolbar>
