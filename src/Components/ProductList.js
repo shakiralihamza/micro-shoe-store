@@ -27,15 +27,18 @@ function ProductList({shoes}) {
                         title={
                             <Box>
                                 {item.title} &nbsp;-&nbsp;&nbsp;
-                                <Box component={'span'} sx={{color: 'text.secondary'}}>${item.price}</Box>
+                                <Box component={'span'} sx={{color: 'rgb(255,255,255,0.7)'}}>${item.price}</Box>
                             </Box>
                         }
-                        subtitle={<Box>
-                            <Rating size={"small"} name="read-only" value={item.reviews} readOnly/>
-                        </Box>}
+                        subtitle={
+                            <Box>
+                                <Rating size={"small"} name="read-only" value={item.reviews}
+                                        sx={{visibility: {xs: 'hidden', sm: 'visible'}}} readOnly/>
+                            </Box>
+                        }
                         actionIcon={
                             <IconButton
-                                sx={{color: 'rgba(255, 255, 255, 0.54)'}}
+                                sx={{color: 'rgba(255, 255, 255, 0.54)', visibility: {xs: 'hidden', sm: 'visible'}}}
                                 aria-label={`info about ${item.title}`}
                             >
                                 <InfoIcon/>
