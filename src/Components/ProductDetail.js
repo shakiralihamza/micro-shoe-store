@@ -20,11 +20,11 @@ function ProductDetail() {
 
     const shoeDetail = shoes.filter(shoe => shoe.title === title)[0];
     return (
-        <Grid container spacing={3} mt={4}>
-            <Grid item xs={8}>
+        <Grid container spacing={3} mt={4} sx={{padding: {xs: '0 10px', sm: '0'}}}>
+            <Grid item xs={12} sm={6} md={8}>
                 <Box component={'img'} sx={{width: '100%'}} src={shoeDetail.image} alt={shoeDetail.title}/>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4}>
                 <Stack direction={"column"} spacing={2}>
                     <Typography variant={"body2"} fontSize={25}>{shoeDetail.title}</Typography>
                     <Typography variant={"caption"} fontSize={20}
