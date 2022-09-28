@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import MyContext from "./Context/MyContext";
-import ShoeData from "./ShoeData";
+import ShoeData from "./assets/ShoeData";
 import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import Header from "./Components/Header";
 import Home from "./Components/Home";

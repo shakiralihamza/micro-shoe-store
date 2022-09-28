@@ -8,7 +8,7 @@ function ProductIndex() {
     const {shoes} = useContext(MyContext);
 
     return (
-        <Typography variant={'h5'} mt={8}>
+        <Typography variant={'h5'} mt={4}>
             All Products
             <ProductList shoes={shoes}/>
             <Outlet/>

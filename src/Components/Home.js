@@ -30,7 +30,7 @@ function Home() {
     ];
     return (
         <Container maxWidth={'lg'}>
-            <Typography variant={'h5'} mt={4}>
+            <Typography variant={'h5'} mt={2}>
                 Home Page
             </Typography>
             <br/>
@@ -66,8 +66,8 @@ const ImageBlock = ({categories}) => {
                         <ImageListItemBar
                             title={
                                 <>
-                                    <Box component={'span'} sx={{textTransform: 'capitalize'}}>{cat.title}</Box>'s
-                                    Shoes
+                                    <Box component={'span'} sx={{textTransform: 'capitalize'}}>{cat.title}</Box>
+                                    {cat.title !== 'kids' ? '\'s' : '\''}&nbsp;Shoes
                                 </>
                             }
                             actionIcon={

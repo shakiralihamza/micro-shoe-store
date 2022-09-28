@@ -1,5 +1,4 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -25,20 +24,19 @@ const MenuButton = styled(Button)(({theme}) => ({
 function Header() {
     const navigate = useNavigate();
     const {category, menu} = useContext(MyContext);
-    const handleClick = (menu) => {
-        navigate(menu);
-    }
 
+    const handleClick = (menu) => navigate(menu);
     const handleCategoryClick = category => navigate(`/products/${category}`)
 
     return (
-        <Box sx={{flexGrow: 1}}>
-            <AppBar position="static">
+        <Box sx={{position: 'fixed', top: 0, bgcolor: 'white', width: '100%', zIndex: 999, opacity: 0.92}}>
+            <Box sx={{flexGrow: 1}}>
                 <Container maxWidth={'lg'}>
-                    <Toolbar disableGutters>
+                    <Toolbar disableGutters sx={{backgroundColor: 'transparent'}}>
                         <Grid container alignItems={"center"}>
                             <Grid item xs={12} sm={12} md={4}>
                                 <IconButton
+                                    disableRipple
                                     size="medium"
                                     edge="start"
                                     color="inherit"
@@ -48,11 +46,11 @@ function Header() {
                                     Shoe Store
                                 </IconButton>
                             </Grid>
-                            <Grid item xs={12} sm={6} md={4} order={{xs: 1, sm: 0}} sx={{marginTop: {xs: '10px', sm: '0'}}}>
-                                <Grid container justifyContent={{xs:'center', sm:'center', md:"center"}}>
+                            <Grid item xs={12} sm={6} md={4} order={{xs: 1, sm: 0}}
+                                  sx={{marginTop: {xs: '10px', sm: '0'}}}>
+                                <Grid container justifyContent={{xs: 'center', sm: 'center', md: "center"}}>
                                     <Grid item xs={"auto"}>
                                         <Stack
-                                            // sx={{flexGrow: 1, mt: 1, justifyContent: "center"}}
                                             direction="row"
                                             spacing={2}
                                         >
@@ -77,31 +75,9 @@ function Header() {
                                                     Kids
                                                 </Typography>
                                             </MenuButton>
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4}>
-                                <Grid container justifyContent={{xs:'center', sm:'center', md:"end"}}>
-                                    <Grid item xs={"auto"}>
-                                        <Stack
-                                            direction="row"
-                                            spacing={1}
-                                        >
                                             <MenuButton
-                                                sx={{borderBottom: menu === '/' ? '1.5px solid' : null}}
-                                                color={'inherit'}
-                                                onClick={() => handleClick('/')}
-                                            >
-                                                <Typography variant={"caption"}>
-                                                    Home
-                                                </Typography>
-                                            </MenuButton>
-                                            <MenuButton
-                                                sx={{borderBottom: menu === 'products' ? '1.5px solid' : null}}
-                                                color={'inherit'}
-                                                onClick={() => handleClick('products')}
-                                            >
+                                                sx={{borderBottom: category === 'products' ? '1.5px solid' : null}}
+                                                color="inherit" onClick={() => handleClick('products')}>
                                                 <Typography variant={"caption"}>
                                                     Products
                                                 </Typography>
@@ -121,7 +97,7 @@ function Header() {
                         </Grid>
                     </Toolbar>
                 </Container>
-            </AppBar>
+            </Box>
         </Box>
     );
 }

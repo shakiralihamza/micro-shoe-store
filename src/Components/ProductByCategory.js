@@ -20,7 +20,7 @@ function ProductByCategory() {
     }, [category, setCategory, setMenu])
 
     return (
-        <Typography variant={'h5'} mt={8}>
+        <Typography variant={'h5'} mt={4}>
             <Box component={'span'} sx={{textTransform: 'capitalize'}}>{category}</Box> Shoes
             <ProductList shoes={categoryShoes}/>
             <Outlet/>

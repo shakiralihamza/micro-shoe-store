@@ -8,22 +8,19 @@ import {useContext} from "react";
 import MyContext from "../Context/MyContext";
 import Box from "@mui/material/Box";
 
-
 export default function Breadcrumb() {
     const {menu, category, currentProduct} = useContext(MyContext);
     const navigate = useNavigate();
 
-    function handleMenu(path) {
-        navigate(path);
-    }
+    const handleMenu = path => navigate(path);
 
     return (
-        <Container maxWidth={'lg'} sx={{mt: 3}}>
+        <Container maxWidth={'lg'} sx={{mt: 12}}>
             <div role="presentation">
                 <Breadcrumbs aria-label="breadcrumb">
                     {
                         menu === 'products'
-                            ?
+                            &&
                             <Link
                                 underline="hover"
                                 sx={{
@@ -37,50 +34,44 @@ export default function Breadcrumb() {
                                 <HomeIcon sx={{mr: 0.5}} fontSize="inherit"/>
                                 Home
                             </Link>
-                            :
-                            null
                     }
                     {
                         menu === 'products'
-                            ?
+                            &&
                             <Link
-                                underline={category===''?'none':'hover'}
+                                underline={category === '' ? 'none' : 'hover'}
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     color: category === '' ? 'text.primary' : null,
-                                    '&:hover': {cursor: category===''?'default':'pointer'}
+                                    '&:hover': {cursor: category === '' ? 'default' : 'pointer'}
                                 }}
                                 color="inherit"
                                 onClick={() => handleMenu('/products')}
                             >
                                 Products
                             </Link>
-                            :
-                            null
                     }
                     {
                         category
-                            ?
+                            &&
                             <Link
-                                underline={currentProduct===''?'none':'hover'}
+                                underline={currentProduct === '' ? 'none' : 'hover'}
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     color: currentProduct === '' ? 'text.primary' : null,
-                                    '&:hover': {cursor: currentProduct===''?'default':'pointer'}
+                                    '&:hover': {cursor: currentProduct === '' ? 'default' : 'pointer'}
                                 }}
                                 color="inherit"
                                 onClick={() => handleMenu(`/products/${category}`)}
                             >
                                 <Box component={'span'} sx={{textTransform: "capitalize"}}>{category}</Box>
                             </Link>
-                            :
-                            null
                     }
                     {
                         currentProduct
-                            ?
+                            &&
                             <Link
                                 underline='none'
                                 sx={{
@@ -92,8 +83,6 @@ export default function Breadcrumb() {
                             >
                                 {currentProduct}
                             </Link>
-                            :
-                            null
                     }
 
                 </Breadcrumbs>
