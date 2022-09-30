@@ -34,7 +34,7 @@ function Header() {
                 <Container maxWidth={'lg'}>
                     <Toolbar disableGutters sx={{backgroundColor: 'transparent'}}>
                         <Grid container alignItems={"center"}>
-                            <Grid item xs={12} sm={12} md={4}>
+                            <Grid item xs={12} md={4}>
                                 <IconButton
                                     disableRipple
                                     size="medium"
@@ -46,13 +46,13 @@ function Header() {
                                     Shoe Store
                                 </IconButton>
                             </Grid>
-                            <Grid item xs={12} sm={6} md={4} order={{xs: 1, sm: 0}}
+                            <Grid item xs={12} md={4} order={{xs: 1, sm: 0}}
                                   sx={{marginTop: {xs: '10px', sm: '0'}}}>
                                 <Grid container justifyContent={{xs: 'center', sm: 'center', md: "center"}}>
                                     <Grid item xs={"auto"}>
                                         <Stack
                                             direction="row"
-                                            spacing={2}
+                                            spacing={{xs: 0, sm: 2}}
                                         >
                                             <MenuButton
                                                 sx={{borderBottom: category === 'men' ? '1.5px solid' : null}}

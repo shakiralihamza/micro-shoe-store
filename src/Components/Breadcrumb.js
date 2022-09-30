@@ -15,7 +15,7 @@ export default function Breadcrumb() {
     const handleMenu = path => navigate(path);
 
     return (
-        <Container maxWidth={'lg'} sx={{mt: 12}}>
+        <Container maxWidth={'lg'} sx={{mt: {xs:14, sm:12}}}>
             <div role="presentation">
                 <Breadcrumbs aria-label="breadcrumb">
                     {
